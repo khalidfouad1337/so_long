@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/27 20:21:32 by kfouad            #+#    #+#             */
-/*   Updated: 2023/05/14 19:38:16 by kfouad           ###   ########.fr       */
+/*   Created: 2023/05/14 18:48:17 by kfouad            #+#    #+#             */
+/*   Updated: 2023/06/07 15:33:49 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+int	ft_strncmp( char *s1,  char	*s2, int	n)
+{
+	 char	*str0;
+	 char	*str1;
+	int			i;
 
-// # include <fcntl.h>
-# include <unistd.h>
-//# include <stdio.h>
-# include <stdlib.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-# endif
-
-char	*get_next_line(int fd);
-char	*ft_strchr(char	*save, int c);
-int	ft_strlen(char *s);
-char	*ft_strjoin(char *save, char *buf);
-char	*newline(char *save);
-char	*cutline(char *save);
-
-#endif
+	str0 = ( char *)s1;
+	str1 = ( char *)s2;
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (str0[i] != '\0' && str0[i] == str1[i] && i < n - 1)
+		i++;
+	return (str0[i] - str1[i]);
+}

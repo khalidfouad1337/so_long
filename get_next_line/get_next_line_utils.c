@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:25:01 by kfouad            #+#    #+#             */
-/*   Updated: 2022/12/02 22:34:31 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/05/14 19:37:53 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ char	*ft_strchr(char	*save, int c)
 	return (0);
 }
 
-size_t	ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!s)
