@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 00:04:41 by kfouad            #+#    #+#             */
-/*   Updated: 2023/05/27 16:57:41 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/07 21:34:49 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,42 +143,6 @@ int len_map(int fd)
     return (len);
 }
 
-int main(int ac, char **av)
-{
-    int fd;
-    int i;
-    int len;
-    char *raw_map;
-    char    **map;
-    char *line;
-    
-    fd = open("map.ber", O_RDWR);
-    i = 0;
-    raw_map = ft_calloc(1, 1);
-    len = len_map(fd);
-    fd = open("map.ber", O_RDWR);
-    while (i < len)
-    {
-        line = get_next_line(fd);
-        raw_map = ft_strjoin(raw_map, line);
-        free(line);
-        i++;
-    }
-    i = 0;
-    map = ft_split(raw_map, '\n');
-    free(raw_map);
-    while (map[i] != 0)
-    {
-        printf("%s\n", map[i++]);
-    }
-    printf("%d\n", check_size_map(map));
-    printf("%d\n", check_wall_map(map));
-    // {
-    //     printf("%s\n", ptr[i]);
-    //    i++;
-    // }
-}
-
 int check_size_map(char **ptr)
 {
     int size;
@@ -221,13 +185,152 @@ int check_wall_map(char **ptr)
     return (1);
 }
 
-// void ft_check_name(char *str)
-// {
-//     int i;
+void ft_check_name(char *str)
+{
+    int i;
     
-//     i = 0;
-//     while (str[i] != '.' && str[i] != '\0')
-//         i++;
-//     if (ft_strncmp(&str[i], ".ber", 4) == 1)
-//         print_error(2);
-// }
+    i = 0;
+	while (str[i])
+		i++;
+    while (str[i] != '.' && i > 0)
+        i--;
+	if (str[i] == '.')
+		i--;
+    if (ft_strncmp(&str[i], ".ber", 4) == 1)
+        print_error(2);
+}
+
+
+void	validation_map1(char **str)
+{
+	int p;
+	int e;
+	int c;
+	int i;
+	int j;
+	
+	p = 0;
+	e = 0;
+	c = 0;
+	i = -1;
+	while (str[++i])
+	{
+		j = -1;
+		while (str[++i][j])
+		{
+			if (str[i][j] == 'P')
+				p++;
+			if (str[i][j] == 'E')
+				e++;
+			if (str[i][j] == 'C')
+				c++;
+		}
+	}
+	if (p != 1 || e != 1 || c < 1)
+	print_error(1);
+}
+
+void	playerxy(char **map, int *x, int *y)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'P')
+			{
+				*x = i;
+				*y = j;
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+void	validation_path(char **map, int length, int width, int x, int y)
+{
+	if (x >= 0 && x < length && y >= 0 && y < width && map[x][y] != '1' && map[x][y] != 'X')
+	{
+		map[x][y] = 'X';
+		validation_path(map, length, width, x - 1, y);
+		validation_path(map, length, width, x + 1, y);
+		validation_path(map, length, width, x, y - 1);
+		validation_path(map, length, width, x, y + 1);
+	}
+	return ;
+}
+
+int	check_x(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'E' || map[i][j] == 'C')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int main(int ac, char **av)
+{
+    int fd;
+    int i;
+    int len;
+    char *raw_map;
+    char    **map;
+    char *line;
+    
+    fd = open("map.ber", O_RDWR);
+    i = 0;
+    raw_map = ft_calloc(1, 1);
+    len = len_map(fd);
+    fd = open("map.ber", O_RDWR);
+    while (i < len)
+    {
+        line = get_next_line(fd);
+        raw_map = ft_strjoin(raw_map, line);
+        free(line);
+        i++;
+    }
+    i = 0;
+    map = ft_split(raw_map, '\n');
+    free(raw_map);
+    while (map[i] != 0)
+    {
+        printf("%s\n", map[i++]);
+    }
+    // printf("%d\n", check_size_map(map));
+    // printf("%d\n", check_wall_map(map));
+    // {
+    //     printf("%s\n", ptr[i]);
+    //    i++;
+    // }
+	int x;
+	int y;
+	playerxy(map, &x, &y);
+	printf("%d\t%d\t%d\t%d\n", x, y, len, ft_strlen(map[0]));
+	validation_path(map, len, ft_strlen(map[0]), x, y);
+	if (!check_x(map))
+	{
+		print_error(1);
+	}
+	i = 0;
+	while (map[i] != 0)
+    {
+        printf("%s\n", map[i++]);
+    }
+}

@@ -6,9 +6,13 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 18:38:55 by kfouad            #+#    #+#             */
-/*   Updated: 2023/05/25 23:55:29 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/07 15:35:05 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 static int	ft_putchar(int c)
 {

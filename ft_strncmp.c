@@ -6,18 +6,18 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 18:48:17 by kfouad            #+#    #+#             */
-/*   Updated: 2023/05/14 18:48:19 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/07 15:33:49 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(const char *s1, const char	*s2, size_t	n)
+int	ft_strncmp( char *s1,  char	*s2, int	n)
 {
-	unsigned char	*str0;
-	unsigned char	*str1;
-	size_t			i;
+	 char	*str0;
+	 char	*str1;
+	int			i;
 
-	str0 = (unsigned char *)s1;
-	str1 = (unsigned char *)s2;
+	str0 = ( char *)s1;
+	str1 = ( char *)s2;
 	i = 0;
 	if (n == 0)
 		return (0);
