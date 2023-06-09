@@ -6,9 +6,12 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 18:48:17 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/07 15:33:49 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/09 17:12:05 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+#include "so_long.h"
 
 int	ft_strncmp( char *s1,  char	*s2, int	n)
 {

@@ -6,13 +6,12 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 18:38:55 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/07 15:35:05 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/09 17:11:40 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
+
+#include "so_long.h"
 
 static int	ft_putchar(int c)
 {
