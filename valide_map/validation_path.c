@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_path.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:02:59 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/11 01:23:22 by yassine          ###   ########.fr       */
+/*   Updated: 2023/06/12 16:07:05 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,19 @@ void	playerxy(t_data *data)
 
 void	validation_path(t_data *data, int x, int y)
 {
-	int length;
-	int width;
+	int	length;
+	int	width;
 
 	length = data->len;
 	width = ft_strlen(data->map2[0]);
-	if (x >= 0 && x < length && y >= 0 && y < width && data->map2[x][y] != '1' && data->map2[x][y] != 'X')
+	if (x >= 0 && x < length && y >= 0 && y < width
+		&& data->map2[x][y] != '1' && data->map2[x][y] != 'X')
 	{
 		data->map2[x][y] = 'X';
-		validation_path(data,  x - 1, y);
-		validation_path(data,  x + 1, y);
-		validation_path(data,  x, y - 1);
-		validation_path(data,  x, y + 1);
+		validation_path(data, x - 1, y);
+		validation_path(data, x + 1, y);
+		validation_path(data, x, y - 1);
+		validation_path(data, x, y + 1);
 	}
 	return ;
 }

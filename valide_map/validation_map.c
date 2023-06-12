@@ -3,89 +3,87 @@
 /*                                                        :::      ::::::::   */
 /*   validation_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 17:01:52 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/11 01:23:42 by yassine          ###   ########.fr       */
+/*   Created: 2023/06/12 16:14:04 by kfouad            #+#    #+#             */
+/*   Updated: 2023/06/12 16:14:07 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-
-void ft_valide_map(t_data *data,char *file)
+void	ft_valide_map(t_data *data, char *file)
 {
-    ft_check_name(file);
-    if (!check_wall_map(data->map))
-        print_error(1);
-    data->nbr_coll = validation_map1(data->map);
-    ft_duplicate_map(data);
-    validation_path(data, data->xplayer, data->yplayer);
-   	if (check_size_map(data->map2) == 0)
+	ft_check_name(file);
+	if (!check_wall_map(data->map))
+		print_error(1);
+	data->nbr_coll = validation_map1(data->map);
+	ft_duplicate_map(data);
+	validation_path(data, data->xplayer, data->yplayer);
+	if (check_size_map(data->map2) == 0)
 		print_error(1);
 }
 
-int check_size_map(char **ptr)
+int	check_size_map(char **ptr)
 {
-    int size;
-    int i;
+	int	size;
+	int	i;
 
-    size = ft_strlen(ptr[0]);
-    i = 0;
-    while (ptr[++i])
-    {
-        if (size != ft_strlen(ptr[i]))
-            return (0);
-    }
-    return (1);
+	size = ft_strlen(ptr[0]);
+	i = 0;
+	while (ptr[++i])
+	{
+		if (size != ft_strlen(ptr[i]))
+			return (0);
+	}
+	return (1);
 }
 
-int check_wall_map(char **ptr)
+int	check_wall_map(char **ptr)
 {
-    int hight;
-    int j;
-    int i;
-    int size;
+	int	hight;
+	int	j;
+	int	i;
+	int	size;
 
-    j = -1;
-    hight = 0;
-    size = ft_strlen(ptr[0]) - 1;
-    while(ptr[hight])
-        hight++;
-    while (ptr[++j])
-    {
-        if (ptr[j][0] != '1' || ptr[j][size] != '1')
-            return (0);
-        i = -1;
-        while ((j == 0 || j == hight - 1) && ptr[j][++i])
-        {
-            if (ptr[j][i] != '1')
-                return (0);
-        }
-    }
-    return (1);
+	j = -1;
+	hight = 0;
+	size = ft_strlen(ptr[0]) - 1;
+	while (ptr[hight])
+		hight++;
+	while (ptr[++j])
+	{
+		if (ptr[j][0] != '1' || ptr[j][size] != '1')
+			return (0);
+		i = -1;
+		while ((j == 0 || j == hight - 1) && ptr[j][++i])
+		{
+			if (ptr[j][i] != '1')
+				return (0);
+		}
+	}
+	return (1);
 }
 
-void ft_check_name(char *str)
+void	ft_check_name(char *str)
 {
-    int i;
-    
-    i = 0;
+	int	i;
+
+	i = 0;
 	while (str[i])
 		i++;
-    while (str[i] != '.' && i > 0)
-        i--;
+	while (str[i] != '.' && i > 0)
+		i--;
 	if (str[i] == '.')
 		i--;
-    if (ft_strncmp(&str[i], ".ber", 4) == 1)
-        print_error(2);
+	if (ft_strncmp(&str[i], ".ber", 4) == 1)
+		print_error(2);
 }
-
 
 int	validation_map1(char **str)
 {
-	t_parm par;
-	
+	t_parm	par;
+
 	par.p = 0;
 	par.e = 0;
 	par.c = 0;
@@ -104,6 +102,6 @@ int	validation_map1(char **str)
 		}
 	}
 	if (par.p != 1 || par.e != 1 || par.c < 1)
-	    print_error(1);
-    return (par.c);
+		print_error(1);
+	return (par.c);
 }
