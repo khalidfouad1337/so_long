@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:00:05 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/09 17:12:46 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/10 23:43:11 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	*ft_calloc(int count, int size)
 	return (p);
 }
 
-char	*ft_substr(char  *s, unsigned int start, int len)
+char	*ft_substr(char  *s,  int start, int len)
 {
 	char	*p;
 	char	*s1;

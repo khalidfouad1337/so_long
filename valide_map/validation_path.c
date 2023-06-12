@@ -3,30 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   validation_path.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:02:59 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/09 17:12:56 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/11 01:23:22 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-void	playerxy(char **map, int *x, int *y)
+void	playerxy(t_data *data)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (map[i])
+	data->nbr_mv = 0;
+	while (data->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (data->map[i][j])
 		{
-			if (map[i][j] == 'P')
+			if (data->map[i][j] == 'P')
 			{
-				*x = i;
-				*y = j;
+				data->xplayer = i;
+				data->yplayer = j;
 				return ;
 			}
 			j++;
@@ -34,15 +35,21 @@ void	playerxy(char **map, int *x, int *y)
 		i++;
 	}
 }
-void	validation_path(char **map, int length, int width, int x, int y)
+
+void	validation_path(t_data *data, int x, int y)
 {
-	if (x >= 0 && x < length && y >= 0 && y < width && map[x][y] != '1' && map[x][y] != 'X')
+	int length;
+	int width;
+
+	length = data->len;
+	width = ft_strlen(data->map2[0]);
+	if (x >= 0 && x < length && y >= 0 && y < width && data->map2[x][y] != '1' && data->map2[x][y] != 'X')
 	{
-		map[x][y] = 'X';
-		validation_path(map, length, width, x - 1, y);
-		validation_path(map, length, width, x + 1, y);
-		validation_path(map, length, width, x, y - 1);
-		validation_path(map, length, width, x, y + 1);
+		data->map2[x][y] = 'X';
+		validation_path(data,  x - 1, y);
+		validation_path(data,  x + 1, y);
+		validation_path(data,  x, y - 1);
+		validation_path(data,  x, y + 1);
 	}
 	return ;
 }

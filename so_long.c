@@ -3,127 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 00:04:41 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/09 20:06:24 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/11 19:20:35 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	get_widht_hieght(t_data *data, char **map)
+
+
+
+
+int ft_close(t_data *data)
 {
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while(map[i])
-	{
-		j = 0;
-		while(map[i][j])
-			j++;
-		data->width = j;
-		i++;
-	}
-	data->height = i;
+	data++;
+	exit(0);
+	return 0;
 }
-
+ 
 int main(int ac, char **av)
 {
     int fd;
-    int i;
-    int len;
-    char *raw_map;
-    char    **map;
-	 char    **map2;
-    char *line;
-    void	*mlx;
-	void	*mlx_win;
-	void	*img_player;
-	void	*img_wall;
-	int j = 0;
-	t_data data;
-	
-    fd = open("map.ber", O_RDWR);
-    i = 0;
-    raw_map = ft_calloc(1, 1);
-    len = len_map(fd);
-    fd = open("map.ber", O_RDWR);
-    while (i < len)
-    {
-        line = get_next_line(fd);
-        raw_map = ft_strjoin(raw_map, line);
-        free(line);
-        i++;
-    }
-    i = 0;
-    map = ft_split(raw_map, '\n');
-    free(raw_map);
-    while (map[i] != 0)
-    {
-        printf("%s\n", map[i++]);
-    }
-    // printf("%d\n", check_size_map(map));
-    // printf("%d\n", check_wall_map(map));
-    // {
-    //     printf("%s\n", ptr[i]);
-    //    i++;
-    // }
-	int x;
-	int y;
-	int img_width;
-	int img_height;
-	int img_width2;
-	int img_height2;
-	
-	playerxy(map, &x, &y);
-	printf("%d\t%d\t%d\t%d\n", x, y, len, ft_strlen(map[0]));
-	i = 0;
-	map2 = malloc((len + 1) * sizeof(char *));
-	while(map[i])
-	{
-		map2[i] = ft_strdup(map[i]);
-		i++;
-	}
-	map2[i] = NULL;
-	validation_path(map, len, ft_strlen(map[0]), x, y);
-	if (!check_x(map))
-	{
+
+    t_data data;
+	if (ac == 1)
 		print_error(1);
-	}
-	if (check_size_map(map) == 0)
-	{
-		printf("erroe in len map\n");
-		exit(1);
-	}
-	i = 0;
-	// while (map[i] != 0)
-    // {
-    //     printf("%s\n", map[i++]);
-    // }
-	get_widht_hieght(&data, map);
-	mlx = mlx_init();
-	
-	img_player = mlx_xpm_file_to_image(mlx, "player.xpm", &img_width, &img_height);
-	img_wall = mlx_xpm_file_to_image(mlx, "wall.xpm", &img_width2, &img_height2);
-	mlx_win = mlx_new_window(mlx, img_width2 * data.width, img_height2 * data.height, "Hello world!");
-	// img = mlx_xpm_file_to_image(mlx, "player.xpm", &img_width, &img_height);
-	i = 0;
-	
-	while(map2[i])
-	{
-		j = 0;
-		while(map2[i][j])
-		{
-			if (map2[i][j] == 'P')
-				mlx_put_image_to_window(mlx, mlx_win, img_player , j * img_width, i * img_height);
-			if (map2[i][j] == '1')
-				mlx_put_image_to_window(mlx, mlx_win, img_wall, j * img_width2, i * img_height2);
-			j++;
-		}
-		i++;
-	}
-	mlx_loop(mlx);
+	av[1] = "map.ber";
+	fd = open(av[1], O_RDWR);
+	if (fd == -1)
+		print_error(1);
+    data.len = len_map(fd);
+	ft_read_map(&data,av[1]);
+    data.map = ft_split(data.raw_map, '\n');
+	free(data.raw_map);
+	ft_valide_map(&data, av[1]);
+	playerxy(&data);
+	get_widht_hieght(&data);
+	init_mlx(&data);
+	mlx_key_hook(data.v_mlx.mlx_win, ft_move, &data);
+	ft_printf("clt --> %d\n",data.nbr_coll);
+	mlx_hook(data.v_mlx.mlx_win, 17, 0, ft_close, &data);
+	mlx_loop(data.v_mlx.mlx);
 }

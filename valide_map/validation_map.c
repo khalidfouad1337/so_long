@@ -3,24 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   validation_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: yassine <yassine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:01:52 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/09 17:12:53 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/11 01:23:42 by yassine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-int len_map(int fd)
+
+void ft_valide_map(t_data *data,char *file)
 {
-    int len;
-
-    len = 0;
-    while(get_next_line(fd))   
-        len++;
-    close(fd);
-    return (len);
+    ft_check_name(file);
+    if (!check_wall_map(data->map))
+        print_error(1);
+    data->nbr_coll = validation_map1(data->map);
+    ft_duplicate_map(data);
+    validation_path(data, data->xplayer, data->yplayer);
+   	if (check_size_map(data->map2) == 0)
+		print_error(1);
 }
 
 int check_size_map(char **ptr)
@@ -48,7 +50,6 @@ int check_wall_map(char **ptr)
     j = -1;
     hight = 0;
     size = ft_strlen(ptr[0]) - 1;
-    
     while(ptr[hight])
         hight++;
     while (ptr[++j])
@@ -81,31 +82,28 @@ void ft_check_name(char *str)
 }
 
 
-void	validation_map1(char **str)
+int	validation_map1(char **str)
 {
-	int p;
-	int e;
-	int c;
-	int i;
-	int j;
+	t_parm par;
 	
-	p = 0;
-	e = 0;
-	c = 0;
-	i = -1;
-	while (str[++i])
+	par.p = 0;
+	par.e = 0;
+	par.c = 0;
+	par.i = -1;
+	while (str[++par.i])
 	{
-		j = -1;
-		while (str[++i][j])
+		par.j = -1;
+		while (str[par.i][++par.j])
 		{
-			if (str[i][j] == 'P')
-				p++;
-			if (str[i][j] == 'E')
-				e++;
-			if (str[i][j] == 'C')
-				c++;
+			if (str[par.i][par.j] == 'P')
+				par.p++;
+			if (str[par.i][par.j] == 'E')
+				par.e++;
+			if (str[par.i][par.j] == 'C')
+				par.c++;
 		}
 	}
-	if (p != 1 || e != 1 || c < 1)
-	print_error(1);
+	if (par.p != 1 || par.e != 1 || par.c < 1)
+	    print_error(1);
+    return (par.c);
 }
