@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 00:04:41 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/12 14:45:25 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/13 19:50:39 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main(int ac, char **av)
 	ft_read_map(&data, av[1]);
 	data.map = ft_split(data.raw_map, '\n');
 	free(data.raw_map);
-	ft_valide_map(&data, av[1]);
 	playerxy(&data);
+	ft_valide_map(&data, av[1]);
 	get_widht_hieght(&data);
 	init_mlx(&data);
 	mlx_key_hook(data.v_mlx.mlx_win, ft_move, &data);

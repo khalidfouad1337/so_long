@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:02:59 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/12 16:07:05 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/13 20:04:29 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ void	playerxy(t_data *data)
 			{
 				data->xplayer = i;
 				data->yplayer = j;
-				return ;
+			}
+			if (data->map[i][j] == 'E')
+			{
+				data->ex = i;
+				data->ey = j;
 			}
 			j++;
 		}

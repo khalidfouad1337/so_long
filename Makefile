@@ -17,7 +17,7 @@ NAME			= so_long
 all:		$(NAME) 
 
 $(NAME): $(OBJS)
-			CC mlx/libmlx.a -framework OpenGL -framework AppKit  $(OBJS) -o $(NAME)
+			CC  -lmlx -framework OpenGL -framework AppKit  $(OBJS) -o $(NAME)
 
 clean:
 				@$(RM) $(OBJS) 

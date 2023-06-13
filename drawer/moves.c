@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 12:08:25 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/12 15:13:13 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/13 20:00:15 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_move_up(t_data *data)
 	y = data->yplayer;
 	if (data->map[x - 1][y] == 'E' && data->nbr_coll == 0)
 		exit(0);
-	else if (data->map[x - 1][y] != '1' && data->map[x - 1][y] != 'E' )
+	else if (data->map[x - 1][y] != '1')
 	{
 		if (data->map[x - 1][y] == 'C')
 		{
@@ -62,7 +62,7 @@ void	ft_move_down(t_data *data)
 	y = data->yplayer;
 	if (data->map[x + 1][y] == 'E' && data->nbr_coll == 0)
 		exit(0);
-	else if (data->map[x + 1][y] != '1' && data->map[x +1][y] != 'E' )
+	else if (data->map[x + 1][y] != '1')
 	{
 		if (data->map[x + 1][y] == 'C')
 		{
@@ -86,7 +86,7 @@ void	ft_move_left(t_data *data)
 	y = data->yplayer;
 	if (data->map[x][y - 1] == 'E' && data->nbr_coll == 0)
 		exit(0);
-	else if (data->map[x][y - 1] != '1' && data->map[x][y - 1] != 'E' )
+	else if (data->map[x][y - 1] != '1')
 	{
 		if (data->map[x][y - 1] == 'C')
 		{
@@ -110,7 +110,7 @@ void	ft_move_right(t_data *data)
 	y = data->yplayer;
 	if (data->map[x][y + 1] == 'E' && data->nbr_coll == 0)
 		exit(0);
-	else if (data->map[x][y + 1] != '1' && data->map[x][y + 1] != 'E' )
+	else if (data->map[x][y + 1] != '1')
 	{
 		if (data->map[x][y + 1] == 'C')
 		{

@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:00:05 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/12 12:06:01 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/12 17:00:36 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char	*ft_strdup(const char *s1)
 	char	*s;
 	char	*p;
 	int		i;
-
 
 	s = (char *)s1;
 	p = (char *)malloc ((ft_strlen(s) + 1) * sizeof(char));
@@ -52,7 +51,7 @@ void	ft_bzero(void *s, size_t n)
 void	*ft_calloc(int count, int size)
 {
 	char	*p;
-	int	r;
+	int		r;
 
 	r = count * size;
 	p = malloc(r);
@@ -63,12 +62,12 @@ void	*ft_calloc(int count, int size)
 	return (p);
 }
 
-char	*ft_substr(char  *s,  int start, int len)
+char	*ft_substr(char *s, int start, int len)
 {
 	char	*p;
 	char	*s1;
-	int	i;
-	int	n;
+	int		i;
+	int		n;
 
 	s1 = (char *)s;
 	i = 0;
@@ -105,7 +104,7 @@ int	chhal_mn_klma(char *s, char c)
 	return (j + 1);
 }
 
-char	**ft_split(char  *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**result;
 	int		i;
@@ -129,5 +128,3 @@ char	**ft_split(char  *s, char c)
 	result[k] = (char *) '\0';
 	return (result);
 }
-
-

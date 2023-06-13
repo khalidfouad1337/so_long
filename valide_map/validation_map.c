@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:14:04 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/12 16:14:07 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/13 19:50:17 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	ft_valide_map(t_data *data, char *file)
 	data->nbr_coll = validation_map1(data->map);
 	ft_duplicate_map(data);
 	validation_path(data, data->xplayer, data->yplayer);
-	if (check_size_map(data->map2) == 0)
+	if (!check_x(data->map2))
+		print_error(1);
+	if (check_size_map(data->map) == 0)
 		print_error(1);
 }
 

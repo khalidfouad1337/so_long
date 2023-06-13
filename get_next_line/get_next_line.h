@@ -6,16 +6,14 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 20:21:32 by kfouad            #+#    #+#             */
-/*   Updated: 2023/05/14 19:38:16 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/13 20:12:39 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-// # include <fcntl.h>
 # include <unistd.h>
-//# include <stdio.h>
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
@@ -23,8 +21,8 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_strchr(char	*save, int c);
-int	ft_strlen(char *s);
+char    *ft_strchr(char	*save, int c);
+int     ft_strlen(char *s);
 char	*ft_strjoin(char *save, char *buf);
 char	*newline(char *save);
 char	*cutline(char *save);

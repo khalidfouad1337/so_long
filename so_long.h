@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:16:56 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/12 16:20:58 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/13 19:58:21 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_mlx_v
 	void	*mlx_win;
 	void	*img_player;
 	void	*img_wall;
+	void	*img_coll;
+	void	*img_door;
 	int		img_width;
 	int		img_height;
 }t_mlx_v;
@@ -43,6 +45,8 @@ typedef struct s_data
 	t_mlx_v	v_mlx;
 	int		xplayer;
 	int		yplayer;
+	int		ex;
+	int		ey;
 	int		nbr_coll;
 	int		nbr_mv;
 }	t_data;
