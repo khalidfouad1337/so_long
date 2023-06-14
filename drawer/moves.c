@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 12:08:25 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/13 20:00:15 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/14 21:03:57 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_move(int key, t_data *data)
 {
-	// ft_printf("--> %d \n", key);
 	if (key == 126 || key == 13)
 		ft_move_up(data);
 	if (key == 125 || key == 1)
@@ -41,15 +40,15 @@ void	ft_move_up(t_data *data)
 	else if (data->map[x - 1][y] != '1')
 	{
 		if (data->map[x - 1][y] == 'C')
-		{
+		// {
 			data->nbr_coll--;
-			ft_printf("----> data->nbr_coll == %d", data->nbr_coll);
-		}
+		// 	ft_printf("----> data->nbr_coll == %d", data->nbr_coll);
+		// }
 		data->map[x][y] = '0';
 		data->map[x - 1][y] = 'P';
 		data->xplayer = x - 1;
 		data->nbr_mv++;
-		// ft_printf("nbr de movs --> %d\n",data->nbr_mv);
+		ft_printf("nbr de movs --> %d\n", data->nbr_mv);
 	}
 }
 
@@ -65,15 +64,15 @@ void	ft_move_down(t_data *data)
 	else if (data->map[x + 1][y] != '1')
 	{
 		if (data->map[x + 1][y] == 'C')
-		{
+		// {
 			data->nbr_coll--;
-			ft_printf("----> data->nbr_coll == %d", data->nbr_coll);
-		}
+		// 	ft_printf("----> data->nbr_coll == %d", data->nbr_coll);
+		// }
 		data->map[x][y] = '0';
 		data->map[x + 1][y] = 'P';
 		data->xplayer = x + 1;
 		data->nbr_mv++;
-		// ft_printf("nbr de movs --> %d\n",data->nbr_mv);
+		ft_printf("nbr de movs --> %d\n", data->nbr_mv);
 	}
 }
 
@@ -89,15 +88,15 @@ void	ft_move_left(t_data *data)
 	else if (data->map[x][y - 1] != '1')
 	{
 		if (data->map[x][y - 1] == 'C')
-		{
+		// {
 			data->nbr_coll--;
-			ft_printf("----> data->nbr_coll == %d", data->nbr_coll);
-		}
+			// ft_printf("----> data->nbr_coll == %d", data->nbr_coll);
+		// }
 		data->map[x][y] = '0';
 		data->map[x][y - 1] = 'P';
 		data->yplayer = y - 1 ;
 		data->nbr_mv++;
-		// ft_printf("nbr de movs --> %d\n",data->nbr_mv);
+		ft_printf("nbr de movs --> %d\n", data->nbr_mv);
 	}
 }
 
@@ -113,14 +112,14 @@ void	ft_move_right(t_data *data)
 	else if (data->map[x][y + 1] != '1')
 	{
 		if (data->map[x][y + 1] == 'C')
-		{
+		// {
 			data->nbr_coll--;
-			ft_printf("----> data->nbr_coll == %d", data->nbr_coll);
-		}
+			// ft_printf("----> data->nbr_coll == %d", data->nbr_coll);
+		// }
 		data->map[x][y] = '0';
 		data->map[x][y + 1] = 'P';
 		data->yplayer = y + 1;
 		data->nbr_mv++;
-		// ft_printf("nbr de movs --> %d\n",data->nbr_mv);
+		ft_printf("nbr de movs --> %d\n", data->nbr_mv);
 	}
 }

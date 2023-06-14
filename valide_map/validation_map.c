@@ -6,24 +6,28 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:14:04 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/13 19:50:17 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/14 20:25:33 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_valide_map(t_data *data, char *file)
+int	ft_valide_map(t_data *data, char *file)
 {
-	ft_check_name(file);
+	if (ft_check_name(file))
+		return (print_error(2), 0);
 	if (!check_wall_map(data->map))
-		print_error(1);
+		return (print_error(3), 0);
 	data->nbr_coll = validation_map1(data->map);
+	if (!data->nbr_coll)
+		return (print_error(3), 0);
 	ft_duplicate_map(data);
 	validation_path(data, data->xplayer, data->yplayer);
 	if (!check_x(data->map2))
-		print_error(1);
+		return (print_error(3), 0);
 	if (check_size_map(data->map) == 0)
-		print_error(1);
+		return (print_error(3), 0);
+	return (1);
 }
 
 int	check_size_map(char **ptr)
@@ -67,7 +71,7 @@ int	check_wall_map(char **ptr)
 	return (1);
 }
 
-void	ft_check_name(char *str)
+int	ft_check_name(char *str)
 {
 	int	i;
 
@@ -78,8 +82,9 @@ void	ft_check_name(char *str)
 		i--;
 	if (str[i] == '.')
 		i--;
-	if (ft_strncmp(&str[i], ".ber", 4) == 1)
-		print_error(2);
+	if (ft_strncmp(&str[i], ".ber", 4) != 0)
+		return (0);
+	return (1);
 }
 
 int	validation_map1(char **str)
@@ -104,6 +109,6 @@ int	validation_map1(char **str)
 		}
 	}
 	if (par.p != 1 || par.e != 1 || par.c < 1)
-		print_error(1);
+		return (0);
 	return (par.c);
 }

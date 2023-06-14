@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:16:56 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/13 19:58:21 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/14 20:21:12 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*ft_substr(char	*s, int start, int len);
 int		chhal_mn_klma(char *s, char c);
 char	**ft_split(char	*s, char c);
 
-void	ft_valide_map(t_data *data, char *file);
+int		ft_valide_map(t_data *data, char *file);
 int		len_map(int fd);
 int		check_x(char **map);
 void	ft_duplicate_map(t_data *data);
@@ -78,7 +78,7 @@ void	ft_read_map(t_data *data, char *file);
 void	get_widht_hieght(t_data *data);
 int		check_size_map(char **ptr);
 int		check_wall_map(char **ptr);
-void	ft_check_name(char *str);
+int		ft_check_name(char *str);
 int		validation_map1(char **str);
 void	playerxy(t_data *data);
 void	validation_path(t_data *data, int x, int y);
