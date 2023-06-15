@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 12:07:20 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/12 14:41:49 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/15 13:15:43 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 
 int	len_map(int fd)
 {
-	int	len;
+	int		len;
+	char	*line;
 
 	len = 0;
-	while (get_next_line(fd))
+	line = get_next_line(fd);
+	while (line)
+	{
+		if (line[0] == '\n')
+			return (free(line), -1);
+		free(line);
+		line = get_next_line(fd);
 		len++;
+	}
 	close(fd);
 	return (len);
 }

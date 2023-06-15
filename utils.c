@@ -6,31 +6,11 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:00:05 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/12 17:00:36 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/15 13:13:39 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-char	*ft_strdup(const char *s1)
-{
-	char	*s;
-	char	*p;
-	int		i;
-
-	s = (char *)s1;
-	p = (char *)malloc ((ft_strlen(s) + 1) * sizeof(char));
-	i = 0;
-	if (!s[i])
-		return (NULL);
-	while (s[i])
-	{
-		p[i] = s[i];
-		i++;
-	}
-	p[i] = '\0';
-	return (p);
-}
 
 void	ft_bzero(void *s, size_t n)
 {

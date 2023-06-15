@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:16:56 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/14 20:21:12 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/15 13:04:57 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,6 @@ void	ft_move_right(t_data *data);
 void	init_mlx(t_data *data);
 void	ft_drawer(t_data *data);
 int		ft_move(int key, t_data *data);
+void	free_maps(t_data *data);
+void	free_images(t_data *data);
 #endif

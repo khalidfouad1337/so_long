@@ -6,7 +6,7 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 20:21:32 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/13 20:12:39 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/15 13:12:50 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # endif
 
 char	*get_next_line(int fd);
-char    *ft_strchr(char	*save, int c);
-int     ft_strlen(char *s);
+char	*ft_strchr(char	*save, int c);
+int		ft_strlen(char *s);
 char	*ft_strjoin(char *save, char *buf);
 char	*newline(char *save);
 char	*cutline(char *save);

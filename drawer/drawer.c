@@ -6,11 +6,21 @@
 /*   By: kfouad <kfouad@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 12:07:56 by kfouad            #+#    #+#             */
-/*   Updated: 2023/06/13 20:11:19 by kfouad           ###   ########.fr       */
+/*   Updated: 2023/06/15 13:07:50 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	free_images(t_data *data)
+{
+	mlx_destroy_image(data->v_mlx.mlx, data->v_mlx.img_coll);
+	mlx_destroy_image(data->v_mlx.mlx, data->v_mlx.img_player);
+	mlx_destroy_image(data->v_mlx.mlx, data->v_mlx.img_wall);
+	mlx_destroy_image(data->v_mlx.mlx, data->v_mlx.img_door);
+	mlx_destroy_window(data->v_mlx.mlx, data->v_mlx.mlx_win);
+	exit(0);
+}
 
 void	init_mlx(t_data *data)
 {

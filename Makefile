@@ -11,8 +11,8 @@ CFLAGS			= -Wall -Wextra -Werror -I.
 NAME			= so_long
 
 
-# %.o : %.c
-# 		@$(CC) $(CFLAGS) -c $< -o $@
+%.o : %.c
+		@$(CC) $(CFLAGS) -c $< -o $@
 
 all:		$(NAME) 
 
@@ -21,11 +21,9 @@ $(NAME): $(OBJS)
 
 clean:
 				@$(RM) $(OBJS) 
-				@echo "\033[31m Delete object files🗑\033[31m"
 			
 fclean:			clean
 				@$(RM) $(NAME)
-				@echo "\033[31m Delete exucted file🗑\033[31m"
 
 re:				fclean $(NAME)
 
